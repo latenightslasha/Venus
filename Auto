@@ -1,0 +1,13 @@
+while wait(0.3) do
+football = game.Workspace:WaitForChild("Football")
+hum = game.Players.LocalPlayer.Character.HumanoidRootPart
+magnitude = (football.position-hum.position).magnitude
+i = 0
+print(magnitude)
+if (magnitude <= 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999) and (i < 1) then
+football.CFrame = CFrame.new(hum.Position)
+i = i + 1
+wait(0.0)
+i = i - 1
+end
+end
