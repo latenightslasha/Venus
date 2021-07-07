@@ -1,0 +1,40 @@
+local Teleport = true
+ 
+function TeleportToBall()
+  if game.Workspace:FindFirstChild("Football") then
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace:FindFirstChild("Football").CFrame
+  end
+end
+----------------------------------------
+function LoadScript()
+  if Teleport == true then
+      TeleportToBall()
+  end
+end
+----------------------------------------
+function onKeyPress(inputObject, gameProcessedEvent)
+if inputObject.KeyCode == Enum.KeyCode.1 then
+       LoadScript()
+   end
+end
+ 
+game:GetService("UserInputService").InputBegan:connect(onKeyPress)
+----------------------------------------
+local UserInputService = game:GetService('UserInputService')
+local plr = game.Players.LocalPlayer
+local Char = plr.Character
+local set = 0.000004 -- I would not advise setting this to over 0.5 if you don't want to be caught straight off. The lower the setting, the more likely you will have to spam to make a successful tackle though.  
+UserInputService.InputBegan:connect(function(K)
+   if K.KeyCode == Enum.KeyCode.2 then -- You can change the "V" to whatever key you want, just make sure you put a capital letter in though, like C, not c.
+for i,v in pairs(game.Players:GetChildren()) do
+if v.Character:FindFirstChild("Football") then
+ball = v.Character:FindFirstChild("Football")
+person = ball.Parent
+       Pos = Char.HumanoidRootPart.CFrame
+       Char.HumanoidRootPart.CFrame = person.Torso.CFrame
+wait(set)
+       Char.HumanoidRootPart.CFrame = Pos
+   end
+end
+end
+end)
